@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://coga75c7dwjif"]
+
+[ext_resource type="Script" path="res://Player1.gd" id="1_g5mop"]
+[ext_resource type="Texture2D" uid="uid://bss0h36bctjqd" path="res://paddle.png" id="1_iumlq"]
+[ext_resource type="Texture2D" uid="uid://bj8ojr6toqub3" path="res://ball.png" id="2_0e3cc"]
+[ext_resource type="Script" path="res://Player2.gd" id="3_vmotw"]
+[ext_resource type="Script" path="res://Ball.gd" id="4_u7gqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfm7"]
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxiac"]
+size = Vector2(8, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4v0n7"]
+radius = 4.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ef23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw5vw"]
+size = Vector2(1080, 720)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player1" type="RigidBody2D" parent="." groups=["players", "walls"]]
+position = Vector2(4, 360)
+gravity_scale = 0.0
+script = ExtResource("1_g5mop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+shape = SubResource("RectangleShape2D_qjfm7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+texture = ExtResource("1_iumlq")
+
+[node name="Player2" type="RigidBody2D" parent="."]
+position = Vector2(1076, 360)
+gravity_scale = 0.0
+script = ExtResource("3_vmotw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+shape = SubResource("RectangleShape2D_lxiac")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+texture = ExtResource("1_iumlq")
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(540, 360)
+gravity_scale = 0.0
+script = ExtResource("4_u7gqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_4v0n7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+material = SubResource("CanvasItemMaterial_4ef23")
+texture = ExtResource("2_0e3cc")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(101, 62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(439, 298)
+shape = SubResource("RectangleShape2D_iw5vw")
