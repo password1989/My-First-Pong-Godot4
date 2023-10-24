@@ -1,12 +1,19 @@
-extends RigidBody2D
+extends Area2D
 
+var screen_size
 var speed = 200
 var player = "player2"
 
-func _physics_process(delta):
+func _ready():
+	screen_size = get_viewport_rect().size
+
+func _process(delta):
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed(player+"_up"):
 		direction.y -= 1
 	if Input.is_action_pressed(player+"_down"):
 		direction.y += 1
-	move_and_collide(direction.normalized() * speed * delta)
+	if direction.length() > 0:
+		direction = direction.normalized() * speed
+	position += direction * delta
+	position = position.clamp(Vector2.ZERO, screen_size)
