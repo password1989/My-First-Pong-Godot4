@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://2chhdxrorg3r"]
+
+[ext_resource type="Texture2D" uid="uid://bd7lp3ml1n0uk" path="res://art/Logo.jpg" id="1_6l3ak"]
+[ext_resource type="Script" path="res://menu.gd" id="1_yslo6"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yslo6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxBotonesOpciones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -120.0
+offset_right = 247.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Logo" type="TextureRect" parent="VBoxBotonesOpciones"]
+layout_mode = 2
+texture = ExtResource("1_6l3ak")
+
+[node name="Jugar" type="Button" parent="VBoxBotonesOpciones"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 80
+text = "Nuevo juego"
+
+[node name="Salir" type="Button" parent="VBoxBotonesOpciones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Salir"
+
+[connection signal="pressed" from="VBoxBotonesOpciones/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxBotonesOpciones/Salir" to="." method="_on_salir_pressed"]
