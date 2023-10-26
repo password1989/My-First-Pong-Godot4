@@ -1,6 +1,7 @@
 extends Area2D
 
 signal hit
+signal goal
 
 var velocity = Vector2(100, 100)
 #var aceleration = 50
@@ -27,10 +28,10 @@ func _on_ball_area_entered(area):
 		print("Jugador")
 
 func _on_area_exited(area):
-	if position.x > get_viewport_rect().size.x or position.x <= 0:
-		print("Goooool")
-		#Para cambiar de escena, esto vendria bien para un menu: get_tree().change_scene_to_file("res://Pong.tscn")
-		#Para salir del juego: get_tree().quit()
+	if position.x > get_viewport_rect().size.x:
+		goal.emit(2)
+	elif position.x <= 0:
+		goal.emit(1)
 	elif area.is_in_group("walls"):
 		velocity.y = -velocity.y
 		print("Muro")

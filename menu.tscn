@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2chhdxrorg3r"]
 
-[ext_resource type="Texture2D" uid="uid://bd7lp3ml1n0uk" path="res://art/Logo.jpg" id="1_6l3ak"]
 [ext_resource type="Script" path="res://menu.gd" id="1_yslo6"]
+[ext_resource type="Texture2D" uid="uid://bvscrcm8bsutg" path="res://art/Logo.png" id="2_myimc"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -37,7 +37,7 @@ theme_override_constants/separation = 15
 
 [node name="Logo" type="TextureRect" parent="VBoxBotonesOpciones"]
 layout_mode = 2
-texture = ExtResource("1_6l3ak")
+texture = ExtResource("2_myimc")
 
 [node name="Jugar" type="Button" parent="VBoxBotonesOpciones"]
 layout_mode = 2
