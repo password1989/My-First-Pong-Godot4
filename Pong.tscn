@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bj8ojr6toqub3" path="res://ball.png" id="2_0e3cc"]
 [ext_resource type="Script" path="res://Player2.gd" id="3_vmotw"]
 [ext_resource type="Script" path="res://Ball.gd" id="4_u7gqj"]
-[ext_resource type="Script" path="res://HUD.gd" id="6_34yl3"]
+[ext_resource type="PackedScene" uid="uid://vhy3oej3sc62" path="res://hud.tscn" id="7_miyi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nke8"]
 size = Vector2(1077, 717)
@@ -30,7 +30,8 @@ position = Vector2(540.5, 360.5)
 shape = SubResource("RectangleShape2D_5nke8")
 
 [node name="Player1" type="Area2D" parent="." groups=["players"]]
-position = Vector2(0, 100)
+position = Vector2(30, 100)
+scale = Vector2(3, 3)
 script = ExtResource("1_g5mop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
@@ -40,7 +41,8 @@ shape = SubResource("RectangleShape2D_lng1r")
 texture = ExtResource("1_iumlq")
 
 [node name="Player2" type="Area2D" parent="." groups=["players"]]
-position = Vector2(1080, 500)
+position = Vector2(1050, 500)
+scale = Vector2(3, 3)
 script = ExtResource("3_vmotw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
@@ -51,6 +53,7 @@ texture = ExtResource("1_iumlq")
 
 [node name="Ball" type="Area2D" parent="."]
 position = Vector2(500, 300)
+scale = Vector2(2, 2)
 script = ExtResource("4_u7gqj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
@@ -59,69 +62,8 @@ shape = SubResource("RectangleShape2D_maf8q")
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 texture = ExtResource("2_0e3cc")
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("6_34yl3")
-
-[node name="Message" type="Label" parent="HUD"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -56.5
-offset_right = 160.0
-offset_bottom = 56.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-
-[node name="ScoreLabelP1" type="Label" parent="HUD"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -190.0
-offset_right = -144.0
-offset_bottom = 113.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 80
-text = "0"
-horizontal_alignment = 1
-
-[node name="ScoreLabelP2" type="Label" parent="HUD"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 144.0
-offset_right = 190.0
-offset_bottom = 113.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 80
-text = "0
-"
-horizontal_alignment = 1
-
-[node name="RestartButton" type="Button" parent="HUD"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.5
-offset_top = 140.0
-offset_right = 55.5
-offset_bottom = 171.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Restart game"
-
-[node name="MessageTimer" type="Timer" parent="HUD"]
-wait_time = 3.0
+[node name="HUD" parent="." instance=ExtResource("7_miyi6")]
 
 [connection signal="area_entered" from="Ball" to="Ball" method="_on_ball_area_entered"]
 [connection signal="area_exited" from="Ball" to="Ball" method="_on_area_exited"]
 [connection signal="goal" from="Ball" to="." method="_on_ball_goal"]
-[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
-[connection signal="pressed" from="HUD/RestartButton" to="HUD" method="_on_restart_button_pressed"]
-[connection signal="timeout" from="HUD/MessageTimer" to="HUD" method="_on_message_timer_timeout"]

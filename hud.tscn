@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://vhy3oej3sc62"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_kgvnj"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kgvnj")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -56.5
+offset_right = 160.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabelP1" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.0
+offset_right = -144.0
+offset_bottom = 113.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabelP2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 144.0
+offset_right = 190.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "0
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="EndGameMenu" type="VBoxContainer" parent="."]
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="EndGameMenu"]
+layout_mode = 2
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="EndGameMenu"]
+layout_mode = 2
+text = "Go to menu"
+
+[node name="CancelButton" type="Button" parent="EndGameMenu"]
+visible = false
+layout_mode = 2
+text = "Return to game"
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="EndGameMenu/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="EndGameMenu/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="EndGameMenu/CancelButton" to="." method="_on_cancel_button_pressed"]
