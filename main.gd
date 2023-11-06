@@ -3,9 +3,8 @@ extends Node2D
 var scorep1=0
 var scorep2=0
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
-		print("Ha presinado escape")
 		_pause()
 
 

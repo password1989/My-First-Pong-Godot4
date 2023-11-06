@@ -17,3 +17,8 @@ func _process(delta):
 		direction = direction.normalized() * speed
 	position += direction * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+
+func _on_touch_panel_gui_input(event):
+	if event is InputEventScreenDrag:
+		position.y += event.relative.y
