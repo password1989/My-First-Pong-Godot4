@@ -29,4 +29,5 @@ func _on_ball_goal(player):
 
 	else:
 		$HUD.show_message("Goooool!")
+		await get_tree().create_timer(2.0).timeout
 		$Ball._respawn()

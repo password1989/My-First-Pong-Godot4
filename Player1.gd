@@ -6,6 +6,9 @@ var player = "player1"
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	# Establecer la posición inicial en el centro de la pantalla
+	position.x = 50
+	position.y = screen_size.y / 2
 
 func _process(delta):
 	var direction = Vector2.ZERO

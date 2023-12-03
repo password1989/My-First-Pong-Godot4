@@ -10,6 +10,9 @@ var random = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	# Establecer la posición inicial en el centro de la pantalla
+	position.x = screen_size.x / 2
+	position.y = screen_size.y / 2
 	random.randomize()
 	if random.randi_range(0,1)==1: #Returns a pseudo-random 32-bit signed integer between from and to (inclusive).
 		velocity.x = -velocity.x
@@ -32,4 +35,5 @@ func _on_area_exited(area):
 		velocity.y = -velocity.y
 
 func _respawn():
-	position = Vector2(500,300)
+	position.x = screen_size.x / 2
+	position.y = screen_size.y / 2

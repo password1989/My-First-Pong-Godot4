@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vhy3oej3sc62" path="res://hud.tscn" id="7_miyi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nke8"]
-size = Vector2(1077, 717)
+size = Vector2(1291, 726)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lng1r"]
 size = Vector2(8, 32)
@@ -26,11 +26,11 @@ script = ExtResource("1_obcvt")
 [node name="Area2D" type="Area2D" parent="." groups=["walls"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(540.5, 360.5)
+position = Vector2(641.5, 359)
 shape = SubResource("RectangleShape2D_5nke8")
 
 [node name="Player1" type="Area2D" parent="." groups=["players"]]
-position = Vector2(30, 300)
+position = Vector2(50, 300)
 scale = Vector2(3, 3)
 script = ExtResource("1_g5mop")
 
@@ -41,13 +41,13 @@ shape = SubResource("RectangleShape2D_lng1r")
 texture = ExtResource("1_iumlq")
 
 [node name="TouchPanel" type="Panel" parent="Player1"]
-offset_left = -4.0
-offset_top = -16.0
-offset_right = 4.0
-offset_bottom = 16.0
+offset_left = -9.0
+offset_top = -21.0
+offset_right = 9.0
+offset_bottom = 21.0
 
 [node name="Player2" type="Area2D" parent="." groups=["players"]]
-position = Vector2(1050, 300)
+position = Vector2(1230, 299)
 scale = Vector2(3, 3)
 script = ExtResource("3_vmotw")
 
@@ -58,13 +58,13 @@ shape = SubResource("RectangleShape2D_7238y")
 texture = ExtResource("1_iumlq")
 
 [node name="TouchPanel" type="Panel" parent="Player2"]
-offset_left = -4.0
-offset_top = -16.0
-offset_right = 4.0
-offset_bottom = 16.0
+offset_left = -9.0
+offset_top = -21.0
+offset_right = 9.0
+offset_bottom = 21.0
 
 [node name="Ball" type="Area2D" parent="."]
-position = Vector2(500, 300)
+position = Vector2(600, 300)
 scale = Vector2(2, 2)
 script = ExtResource("4_u7gqj")
 
